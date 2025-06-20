@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="icon" href="img/fav.jpg" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trader's Diary - Webninar </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/payment.css">
+
+    <style>
+        .webinar-section {
+            padding: 60px 20px;
+            font-family: 'Segoe UI', sans-serif;
+            color: #1e2a38;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #0077b6;
+            font-weight: bold;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #5a7184;
+        }
+
+        .webinar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .webinar-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .webinar-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .webinar-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .webinar-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .webinar-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #004d80;
+        }
+
+        .webinar-card p {
+            font-size: 15px;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 22px;
+            background-color: #0077b6;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #005f8e;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <img src="img/logo-removebg-preview.png" alt="ElearnTrade Logo" style="height: 40px;">
+            </a>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#learn">Learn</a></li>
+                    <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#analysis">Analysis</a></li>
+                    <li><a href="#markets">Markets</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li>
+                        <a href="https://ditss.in/" class="ditss-btn" target="_blank">DITSS</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="webinar-section">
+        <div class="section-header" data-aos="fade-up">
+            <h2>📊 Live Trading Webinars</h2>
+            <p>Join expert-led sessions and boost your market knowledge.</p>
+        </div>
+
+        <div class="webinar-grid">
+            <!-- Intraday Trading -->
+            <div class="webinar-card" data-aos="zoom-in">
+                <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" alt="Intraday Trading">
+                <h3>Intraday Trading</h3>
+                <p>Master same-day trading strategies, risk control, and timing the market like a pro.</p>
+                <a href="#" class="btn">Join Now</a>
+            </div>
+
+            <!-- Option Trading -->
+            <div class="webinar-card" data-aos="zoom-in" data-aos-delay="100">
+                <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Option Trading">
+                <h3>Option Trading</h3>
+                <p>Understand calls, puts, and complex option strategies with real-time examples.</p>
+                <a href="#" class="btn">Join Now</a>
+            </div>
+
+            <!-- Equity Trading -->
+            <div class="webinar-card" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://cdn-icons-png.flaticon.com/512/2231/2231048.png" alt="Equity Trading">
+                <h3>Equity Trading</h3>
+                <p>Explore stock market fundamentals, chart patterns, and stock selection methods.</p>
+                <a href="#" class="btn">Join Now</a>
+            </div>
+
+            <!-- Future Trading -->
+            <div class="webinar-card" data-aos="zoom-in" data-aos-delay="300">
+                <img src="https://cdn-icons-png.flaticon.com/512/3209/3209265.png" alt="Future Trading">
+                <h3>Future Trading</h3>
+                <p>Get insights on leverage, margin, and hedging through futures contracts.</p>
+                <a href="#" class="btn">Join Now</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Trader's Diary</h3>
+                <p>Your complete guide to mastering the stock market and becoming a better trader.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="index.html#analysis">Technical Analysis</a></li>
+                    <li><a href="#">Fundamental Analysis</a></li>
+                    <li><a href="#">Trading Psychology</a></li>
+                    <li><a href="#">Market News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contact@tradersdiary.com</li>
+                    <li>
+                        <a href="tel:+916302825279">
+                            <i class="fas fa-phone"></i> +91-6302825279
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.google.com/maps/place/Uttar+Pradesh" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i> Uttar Pradesh
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright" style="text-align: center; padding: 10px; font-family: Arial, sans-serif;">
+            <p style="margin: 0; font-size: 14px;">&copy; 2025 | All rights reserved | Developed with <span
+                    style="color: red;">❤️</span> by <strong>DITSS Team</strong></p>
+
+            <p style="margin: 5px 0 0; font-size: 12px; ">
+                Disclaimer: This website is for educational purposes only. Trading and investing involve financial risk.
+                Always do your own research or consult a certified financial advisor before making any decisions.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+
+        //  Sticky Header
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        // Show nav
+        hamburger.addEventListener('click', () => {
+            navLinks.style.display = 'flex';
+            setTimeout(() => {
+                navLinks.classList.add('active');
+            }, 10);
+        });
+
+
+        // Close when clicking outside
+        document.addEventListener('click', (event) => {
+            const isClickInside = navLinks.contains(event.target) || hamburger.contains(event.target);
+
+            if (!isClickInside && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                setTimeout(() => {
+                    navLinks.style.display = 'none';
+                }, 400);
+            }
+        });
+
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = '<i class="fas fa-sun"></i>';
+        const moonIcon = '<i class="fas fa-moon"></i>';
+
+        // Check and apply saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            themeToggle.innerHTML = savedTheme === 'light' ? moonIcon : sunIcon;
+        } else {
+            // Default to dark theme
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = sunIcon;
+        }
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'light' ? moonIcon : sunIcon;
+        });
+
+        // Animate trading tips on scroll
+        const tipCards = document.querySelectorAll('.tip-card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        tipCards.forEach(card => {
+            observer.observe(card);
+        });
+
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+
+
+</body>
+
+</html>

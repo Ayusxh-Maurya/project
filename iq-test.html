@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="icon" href="img/fav.jpg" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trader's Diary - Animated Trading Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/payment.css">
+
+
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <img src="img/logo-removebg-preview.png" alt="ElearnTrade Logo" style="height: 40px;">
+            </a>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#learn">Learn</a></li>
+                    <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#analysis">Analysis</a></li>
+                    <li><a href="#markets">Markets</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li>
+                        <a href="https://ditss.in/" class="ditss-btn" target="_blank">DITSS</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+
+    <section id="trading-iq-test"
+        style="padding: 40px 20px; background: var(--bg-color, #f4f7fa); color: var(--text-color, #1e2329);">
+        <div class="container" style="max-width: 900px; margin: auto;">
+            <div class="card"
+                style="background: var(--card-bg, #ffffff); border-radius: 16px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                <h2 style="text-align: center; margin-bottom: 20px;">📈 Trading IQ Test</h2>
+                <p style="text-align: center; margin-bottom: 25px;">Answer the questions below. You'll get your score
+                    immediately after submitting.</p>
+                <form id="tradingIQForm">
+                    <div id="questions"></div>
+                    <div style="text-align: center; margin-top: 25px;">
+                        <button type="submit" style="
+            padding: 12px 30px;
+            background: var(--primary-color, #00aaff);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+          ">
+                            Submit Answers
+                        </button>
+                    </div>
+                </form>
+                <div id="scoreResult" style="margin-top: 30px; font-weight: bold; font-size: 18px; text-align: center;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const questionsData = [
+            {
+                question: "What does 'Stop Loss' mean in trading?",
+                options: ["A method to increase profit", "A pre-set order to limit loss", "A way to avoid paying taxes", "A limit order at market high"],
+                correct: "B"
+            },
+            {
+                question: "What is leverage in trading?",
+                options: ["Using your own capital only", "Borrowed money to increase trade size", "Holding a position overnight", "Trading without a broker"],
+                correct: "B"
+            },
+            {
+                question: "What is a candlestick pattern?",
+                options: ["A type of trading bot", "A chart used to predict price movement", "An exchange's rulebook", "A tax document"],
+                correct: "B"
+            },
+            {
+                question: "If the RSI is above 70, it means?",
+                options: ["Oversold market", "Overbought market", "Bull market confirmed", "Time to short"],
+                correct: "B"
+            },
+            {
+                question: "What is slippage in trading?",
+                options: ["Falling due to leverage", "Difference between expected & actual execution price", "Error in trading platform", "Spreads widening"],
+                correct: "B"
+            },
+            {
+                question: "A 'bullish engulfing' pattern signals?",
+                options: ["Possible upward trend", "Market reversal to bearish", "Strong resistance level", "Sideways trend"],
+                correct: "A"
+            },
+            {
+                question: "What does PnL mean?",
+                options: ["Points and Leverage", "Profit and Loss", "Price and Levels", "Profit No Loss"],
+                correct: "B"
+            },
+            {
+                question: "What is margin in trading?",
+                options: ["Full account balance", "Amount needed to open a leveraged trade", "Tax paid on trade", "Broker commission"],
+                correct: "B"
+            },
+            {
+                question: "What’s a good risk/reward ratio?",
+                options: ["1:1", "2:1 or higher", "0.5:1", "10:1"],
+                correct: "B"
+            },
+            {
+                question: "What is the main benefit of using a demo account?",
+                options: ["Real money returns", "Tax-free trades", "Practice without risk", "Higher leverage"],
+                correct: "C"
+            }
+        ];
+
+        const questionsContainer = document.getElementById("questions");
+        questionsData.forEach((q, index) => {
+            const qNum = index + 1;
+            const optionsHTML = q.options.map((opt, i) => {
+                const optionLetter = String.fromCharCode(65 + i);
+                return `
+        <label style="display: block; margin: 6px 0;">
+          <input type="radio" name="q${qNum}" value="${optionLetter}" />
+          ${opt}
+        </label>
+      `;
+            }).join("");
+
+            const questionHTML = `
+      <div class="question" style="margin-bottom: 25px;">
+        <p><strong>${qNum}. ${q.question}</strong></p>
+        ${optionsHTML}
+      </div>
+    `;
+
+            questionsContainer.innerHTML += questionHTML;
+        });
+
+        document.getElementById("tradingIQForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            let score = 0;
+            questionsData.forEach((q, i) => {
+                const qNum = i + 1;
+                const selected = document.querySelector(`input[name="q${qNum}"]:checked`);
+                if (selected && selected.value === q.correct) {
+                    score++;
+                }
+            });
+            document.getElementById("scoreResult").innerHTML = `✅ You got <span style="color: green;">${score}</span> out of <strong>10</strong> correct!`;
+        });
+    </script>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Trader's Diary</h3>
+                <p>Your complete guide to mastering the stock market and becoming a better trader.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="index.html#analysis">Technical Analysis</a></li>
+                    <li><a href="#">Fundamental Analysis</a></li>
+                    <li><a href="#">Trading Psychology</a></li>
+                    <li><a href="#">Market News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contact@tradersdiary.com</li>
+                    <li>
+                        <a href="tel:+916302825279">
+                            <i class="fas fa-phone"></i> +91-6302825279
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.google.com/maps/place/Uttar+Pradesh" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i> Uttar Pradesh
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright" style="text-align: center; padding: 10px; font-family: Arial, sans-serif;">
+            <p style="margin: 0; font-size: 14px;">&copy; 2025 | All rights reserved | Developed with <span
+                    style="color: red;">❤️</span> by <strong>DITSS Team</strong></p>
+
+            <p style="margin: 5px 0 0; font-size: 12px; ">
+                Disclaimer: This website is for educational purposes only. Trading and investing involve financial risk.
+                Always do your own research or consult a certified financial advisor before making any decisions.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+
+        //  Sticky Header
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        // Show nav
+        hamburger.addEventListener('click', () => {
+            navLinks.style.display = 'flex';
+            setTimeout(() => {
+                navLinks.classList.add('active');
+            }, 10);
+        });
+
+
+        // Close when clicking outside
+        document.addEventListener('click', (event) => {
+            const isClickInside = navLinks.contains(event.target) || hamburger.contains(event.target);
+
+            if (!isClickInside && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                setTimeout(() => {
+                    navLinks.style.display = 'none';
+                }, 400);
+            }
+        });
+
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = '<i class="fas fa-sun"></i>';
+        const moonIcon = '<i class="fas fa-moon"></i>';
+
+        // Check and apply saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            themeToggle.innerHTML = savedTheme === 'light' ? moonIcon : sunIcon;
+        } else {
+            // Default to dark theme
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = sunIcon;
+        }
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'light' ? moonIcon : sunIcon;
+        });
+
+        // Animate trading tips on scroll
+        const tipCards = document.querySelectorAll('.tip-card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        tipCards.forEach(card => {
+            observer.observe(card);
+        });
+
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+
+
+</body>
+
+</html>

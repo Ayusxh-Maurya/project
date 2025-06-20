@@ -1,0 +1,78 @@
+/* Container styles */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.payment-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Left and right column default width for desktop */
+.payment-form-container,
+.payment-summary {
+  flex: 1 1 48%;
+}
+
+/* Card design */
+.card {
+  background: var(--card-bg, #fff);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* QR-specific styles */
+.qr-code {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.qr-instructions ol {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+/* Payment security */
+.payment-security {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #4caf50;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Summary items */
+.summary-item,
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.summary-total {
+  font-weight: bold;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+/* Responsive behavior */
+@media screen and (max-width: 768px) {
+  .payment-form-container,
+  .payment-summary {
+    flex: 1 1 100%;
+  }
+}

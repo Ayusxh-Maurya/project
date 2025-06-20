@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+ 
+    <link rel="icon" href="fav.jpg" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trader's Diary - Animated Trading Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* --- 1. Global Styles & Variables --- */
+        :root {
+            --primary-color: #00aaff;
+            --secondary-color: #00eaff;
+            --success-color: #00e676;
+            --danger-color: #ff3d00;
+            --profit-color: #00e676;
+            --loss-color: #ff3d00;
+            --text-color: #1e2329;
+            --bg-color: #f4f7fa;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --header-bg: rgba(255, 255, 255, 0.85);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #00aaff;
+            --secondary-color: #00eaff;
+            --text-color: #e0e7ff;
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --header-bg: rgba(13, 17, 23, 0.85);
+            --shadow-color: rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* --- Animation Keyframes --- */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(30deg);
+            color: var(--primary-color);
+        }
+
+        /* --- 3. Hero Section with Animations --- */
+        .hero {
+            padding: 5rem 5% 3rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            animation: fadeIn 1s ease-out 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+
+
+        /* --- 4. Featured Post with Hover Animations --- */
+        .featured-post {
+            max-width: 1200px;
+            margin: 2rem auto 4rem;
+            padding: 0 5%;
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: var(--primary-color);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+
+        .section-title:hover::after {
+            transform: scaleX(1.2);
+        }
+
+        .post-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: perspective(1000px) rotateX(0deg);
+        }
+
+        .post-card:hover {
+            transform: perspective(1000px) rotateX(5deg) translateY(-10px);
+            box-shadow: 0 15px 30px var(--shadow-color);
+        }
+
+        .post-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .post-card:hover .post-image {
+            transform: scale(1.03);
+        }
+
+        .post-content {
+            padding: 1.5rem;
+        }
+
+        .post-category {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            background-size: 200% auto;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+            transition: background-position 0.5s;
+        }
+
+        .post-card:hover .post-category {
+            background-position: right center;
+        }
+
+        .post-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+
+        .post-card:hover .post-title {
+            color: var(--primary-color);
+        }
+
+        .post-excerpt {
+            margin-bottom: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .read-more::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary-color);
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+
+        .read-more:hover::after {
+            transform: translateX(0);
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        /* --- 5. Trading Tips Section with Staggered Animations --- */
+        .trading-tips {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tip-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .tip-card.animated {
+            animation: fadeIn 0.6s forwards;
+        }
+
+        .tip-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .tip-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .tip-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .tip-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .tip-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .tip-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        .tip-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .tip-card h3::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        .tip-card:hover h3::after {
+            width: 100%;
+        }
+
+        .tip-card p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* --- 6. Market Updates with Pulsing Numbers --- */
+        .market-updates {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 5%;
+        }
+
+        .market-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 8px var(--shadow-color);
+            border-radius: 8px;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .market-table th,
+        .market-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .market-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .market-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .market-table tr:hover td {
+            background-color: rgba(0, 170, 255, 0.05);
+        }
+
+        .price-up {
+            color: var(--profit-color);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .price-up::before {
+            content: '↑';
+            margin-right: 5px;
+        }
+
+        .price-down {
+            color: var(--loss-color);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .price-down::before {
+            content: '↓';
+            margin-right: 5px;
+        }
+
+        .price-up.pulse {
+            animation: pulse 0.5s 2;
+        }
+
+        .price-down.pulse {
+            animation: pulse 0.5s 2;
+        }
+
+        /* --- 7. Newsletter with Gradient Animation --- */
+        .newsletter {
+            background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color), #00e676, #00aaff);
+            background-size: 400% 400%;
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+            margin: 4rem 0;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        .newsletter h2 {
+            margin-bottom: 1rem;
+            animation: fadeIn 1s;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+            animation: fadeIn 1s 0.2s both;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            animation: fadeIn 1s 0.4s both;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .newsletter-form button {
+            background-color: var(--text-color);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #000;
+            transform: scale(1.02);
+        }
+
+        .newsletter-form button i {
+            transition: transform 0.3s;
+        }
+
+        .newsletter-form button:hover i {
+            transform: translateX(3px);
+        }
+
+        /* --- 8. Footer with Floating Elements --- */
+        footer {
+            background-color: var(--card-bg);
+            padding: 3rem 5%;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .footer-column:hover h3::after {
+            width: 50%;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .footer-column ul li:hover {
+            transform: translateX(5px);
+        }
+
+        .footer-column ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            opacity: 0.7;
+        }
+
+
+        .indicator-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .indicator-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        /* --- 10. Responsive Design --- */
+        @media (max-width: 768px) {
+
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-form input {
+                border-radius: 4px;
+                margin-bottom: 0.5rem;
+            }
+
+            .newsletter-form button {
+                border-radius: 4px;
+                padding: 0.8rem;
+            }
+
+
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .post-meta {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+    
+  
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <img src="img/logo-removebg-preview.png" alt="ElearnTrade Logo" style="height: 40px;">
+            </a>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#learn">Learn</a></li>
+                    <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#analysis">Analysis</a></li>
+                    <li><a href="#markets">Markets</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li>
+                        <a href="https://ditss.in/" class="ditss-btn" target="_blank">DITSS</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Master the Stock Market</h1>
+        <p>Get expert trading strategies, technical analysis, and market insights to boost your investment performance
+        </p>
+
+    </section>
+
+    <!-- Featured Post -->
+    <section class="featured-post">
+        <h2 class="section-title">Featured Article</h2>
+        <div class="post-card">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Trading Strategies" class="post-image">
+            <div class="post-content">
+                <span class="post-category">Technical Analysis</span>
+                <h3 class="post-title">Top 5 Trading Strategies That Work in 2024</h3>
+                <p class="post-excerpt">Discover how these proven trading strategies can help you maximize profits while
+                    minimizing risks in today's volatile markets.</p>
+                <div class="post-meta">
+                    <span>June 15, 2024</span>
+                    <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trading Tips Section -->
+    <section class="trading-tips">
+        <h2 class="section-title">Essential Trading Tips</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <h3>Risk Management</h3>
+                <p>Never risk more than 2% of your capital on a single trade. Proper risk management is the key to
+                    long-term success.</p>
+            </div>
+            <div class="tip-card">
+                <h3>Follow the Trend</h3>
+                <p>"The trend is your friend" - Always trade in the direction of the market trend, not against it.</p>
+            </div>
+            <div class="tip-card">
+                <h3>Emotion Control</h3>
+                <p>Keep emotions out of trading. Stick to your strategy and don't let fear or greed drive your
+                    decisions.</p>
+            </div>
+            <div class="tip-card">
+                <h3>Position Sizing</h3>
+                <p>Size your positions appropriately for your account size. Avoid over-leveraging.</p>
+            </div>
+            <div class="tip-card">
+                <h3>Keep a Journal</h3>
+                <p>Document every trade - entry, exit, reasoning. This helps identify strengths and weaknesses.</p>
+            </div>
+            <div class="tip-card">
+                <h3>Watch the News</h3>
+                <p>Stay updated with economic calendars. Market movements often follow news events.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Updates -->
+    <section class="market-updates">
+        <h2 class="section-title">Market Watch</h2>
+        <table class="market-table">
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Price</th>
+                    <th>Change</th>
+                    <th>% Change</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>S&P 500</td>
+                    <td>5,450.25</td>
+                    <td class="price-up">+45.75</td>
+                    <td class="price-up">+0.85%</td>
+                </tr>
+                <tr>
+                    <td>NASDAQ</td>
+                    <td>17,680.50</td>
+                    <td class="price-up">+92.30</td>
+                    <td class="price-up">+0.52%</td>
+                </tr>
+                <tr>
+                    <td>DOW JONES</td>
+                    <td>38,650.20</td>
+                    <td class="price-down">-35.40</td>
+                    <td class="price-down">-0.09%</td>
+                </tr>
+                <tr>
+                    <td>RUSSELL 2000</td>
+                    <td>2,025.75</td>
+                    <td class="price-up">+12.60</td>
+                    <td class="price-up">+0.63%</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>Join Our Trading Community</h2>
+        <p>Get weekly trading tips, market analysis, and exclusive content delivered to your inbox</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Your email address">
+            <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
+        </form>
+    </section>
+
+    <!-- Sticky Register Button for Futures -->
+    <div class="sticky-register" data-aos="fade-left" data-aos-delay="1000" data-aos-offset="0">
+        <a href="#" class="btn btn-primary">Register for Futures Trading</a>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Trader's Diary</h3>
+                <p>Your complete guide to mastering the stock market and becoming a better trader.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="index.html#analysis">Technical Analysis</a></li>
+                    <li><a href="#">Fundamental Analysis</a></li>
+                    <li><a href="#">Trading Psychology</a></li>
+                    <li><a href="#">Market News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contact@tradersdiary.com</li>
+                    <li>
+                        <a href="tel:+916302825279">
+                            <i class="fas fa-phone"></i> +91-6302825279
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.google.com/maps/place/Uttar+Pradesh" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i> Uttar Pradesh
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright" style="text-align: center; padding: 10px; font-family: Arial, sans-serif;">
+            <p style="margin: 0; font-size: 14px;">&copy; 2025 | All rights reserved | Developed with <span
+                    style="color: red;">❤️</span> by <strong>DITSS Team</strong></p>
+
+            <p style="margin: 5px 0 0; font-size: 12px; ">
+                Disclaimer: This website is for educational purposes only. Trading and investing involve financial risk.
+                Always do your own research or consult a certified financial advisor before making any decisions.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+
+        //  Sticky Header
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        // Show nav
+        hamburger.addEventListener('click', () => {
+            navLinks.style.display = 'flex';
+            setTimeout(() => {
+                navLinks.classList.add('active');
+            }, 10);
+        });
+
+        // // Close on link click
+        // navLinks.querySelectorAll('a').forEach(link => {
+        //     link.addEventListener('click', () => {
+        //         navLinks.classList.remove('active');
+        //         setTimeout(() => {
+        //             navLinks.style.display = 'none';
+        //         }, 400);
+        //     });
+        // });
+
+        // Close when clicking outside
+        document.addEventListener('click', (event) => {
+            const isClickInside = navLinks.contains(event.target) || hamburger.contains(event.target);
+
+            if (!isClickInside && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                setTimeout(() => {
+                    navLinks.style.display = 'none';
+                }, 400);
+            }
+        });
+
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = '<i class="fas fa-sun"></i>';
+        const moonIcon = '<i class="fas fa-moon"></i>';
+
+        // Check and apply saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            themeToggle.innerHTML = savedTheme === 'light' ? moonIcon : sunIcon;
+        } else {
+            // Default to dark theme
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = sunIcon;
+        }
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'light' ? moonIcon : sunIcon;
+        });
+
+        // Animate trading tips on scroll
+        const tipCards = document.querySelectorAll('.tip-card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        tipCards.forEach(card => {
+            observer.observe(card);
+        });
+
+        // Simulate market data updates
+        function updateMarketData() {
+            const changes = document.querySelectorAll('.price-up, .price-down');
+            const indicatorValue = indicator.querySelector('.indicator-value');
+
+            changes.forEach(change => {
+                // Random fluctuation simulation
+                if (Math.random() > 0.7) {
+                    change.classList.add('pulse');
+
+                    if (change.classList.contains('price-up')) {
+                        change.classList.remove('price-up');
+                        change.classList.add('price-down');
+                        change.innerHTML = change.innerHTML.replace('+', '-');
+                    } else {
+                        change.classList.remove('price-down');
+                        change.classList.add('price-up');
+                        change.innerHTML = change.innerHTML.replace('-', '+');
+                    }
+
+                    // Update floating indicator if this is NASDAQ
+                    if (change.closest('tr').querySelector('td').textContent === 'NASDAQ') {
+                        indicatorValue.innerHTML = change.closest('tr').querySelector('td:nth-child(2)').textContent +
+                            ' ' + change.closest('tr').querySelector('td:nth-child(3)').textContent;
+
+                        if (change.classList.contains('price-up')) {
+                            indicatorValue.classList.remove('price-down');
+                            indicatorValue.classList.add('price-up');
+                        } else {
+                            indicatorValue.classList.remove('price-up');
+                            indicatorValue.classList.add('price-down');
+                        }
+                    }
+
+                    setTimeout(() => {
+                        change.classList.remove('pulse');
+                    }, 500);
+                }
+            });
+        }
+
+        // Update market data every 3 seconds (simulation)
+        setInterval(updateMarketData, 3000);
+
+    </script>
+
+
+</body>
+
+</html>

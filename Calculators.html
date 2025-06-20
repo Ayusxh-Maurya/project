@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="icon" href="img/fav.jpg" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trader's Diary - Trading Calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/payment.css">
+    <style>/* Section Title */
+h2 {
+     margin-top: 20px;
+    margin-bottom: 10px;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+/* Calculator Container */
+.calc-container 
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  background-color: var(--bg-color);
+}
+
+/* Calculator Cards */
+.calc-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 320px;
+  transition: transform 0.2s ease;
+}
+.calc-card:hover {
+  transform: translateY(-5px);
+}
+
+.calc-card h3 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+/* Inputs */
+.calc-card input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-size: 1rem;
+  transition: border 0.2s, background-color 0.3s;
+}
+.calc-card input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Button */
+.calc-card button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+.calc-card button:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Result Output */
+.result {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-weight: 500;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  word-wrap: break-word;
+}
+</style>
+  
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <img src="img/logo-removebg-preview.png" alt="ElearnTrade Logo" style="height: 40px;">
+            </a>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#learn">Learn</a></li>
+                    <li><a href="index.html#tools">Tools</a></li>
+                    <li><a href="index.html#analysis">Analysis</a></li>
+                    <li><a href="#markets">Markets</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li>
+                        <a href="https://ditss.in/" class="ditss-btn" target="_blank">DITSS</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+   
+    <!-- Main Content -->
+     
+<h2>🚀 Trading Calculators</h2>
+
+<div class="calc-container">
+
+  <!-- Lot Size Calculator -->
+  <div class="calc-card">
+    <h3>Lot Size Calculator</h3>
+    <input type="number" id="lotCapital" placeholder="Capital (₹)">
+    <input type="number" id="lotRiskPerTrade" placeholder="Risk % per trade">
+    <input type="number" id="lotStopLoss" placeholder="Stop Loss ₹">
+    <input type="number" id="lotSizeValue" placeholder="Lot Size (e.g. 50)">
+    <button onclick="calculateLotSize()">Calculate</button>
+    <div class="result" id="lotSizeResult"></div>
+  </div>
+
+  <!-- Risk/Reward Calculator -->
+  <div class="calc-card">
+    <h3>Risk/Reward Calculator</h3>
+    <input type="number" id="entryPrice" placeholder="Entry Price (₹)">
+    <input type="number" id="stopLossRR" placeholder="Stop Loss Price (₹)">
+    <input type="number" id="targetPrice" placeholder="Target Price (₹)">
+    <button onclick="calculateRiskReward()">Calculate</button>
+    <div class="result" id="riskRewardResult"></div>
+  </div>
+
+  <!-- Pivot Point Calculator -->
+  <div class="calc-card">
+    <h3>Pivot Point Calculator</h3>
+    <input type="number" id="highPrice" placeholder="High Price (₹)">
+    <input type="number" id="lowPrice" placeholder="Low Price (₹)">
+    <input type="number" id="closePrice" placeholder="Close Price (₹)">
+    <button onclick="calculatePivot()">Calculate</button>
+    <div class="result" id="pivotResult"></div>
+  </div>
+
+</div>
+
+<script>
+  // Fade in animation when visible on screen
+  const cards = document.querySelectorAll('.calc-card');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.2 });
+
+  cards.forEach(card => observer.observe(card));
+
+  function calculateLotSize() {
+    const capital = parseFloat(document.getElementById('lotCapital').value);
+    const risk = parseFloat(document.getElementById('lotRiskPerTrade').value);
+    const stopLoss = parseFloat(document.getElementById('lotStopLoss').value);
+    const lotSize = parseFloat(document.getElementById('lotSizeValue').value);
+    if (!capital || !risk || !stopLoss || !lotSize) return;
+    const riskAmount = (risk / 100) * capital;
+    const totalLots = Math.floor(riskAmount / (stopLoss * lotSize));
+    document.getElementById('lotSizeResult').textContent = `You can trade: ${totalLots} lots`;
+  }
+
+  function calculateRiskReward() {
+    const entry = parseFloat(document.getElementById('entryPrice').value);
+    const sl = parseFloat(document.getElementById('stopLossRR').value);
+    const target = parseFloat(document.getElementById('targetPrice').value);
+    if (!entry || !sl || !target) return;
+    const risk = Math.abs(entry - sl);
+    const reward = Math.abs(target - entry);
+    const rr = reward / risk;
+    document.getElementById('riskRewardResult').textContent =
+      `Risk: ₹${risk.toFixed(2)}, Reward: ₹${reward.toFixed(2)}, R:R = ${rr.toFixed(2)}:1`;
+  }
+
+  function calculatePivot() {
+    const high = parseFloat(document.getElementById('highPrice').value);
+    const low = parseFloat(document.getElementById('lowPrice').value);
+    const close = parseFloat(document.getElementById('closePrice').value);
+    if (!high || !low || !close) return;
+    const pp = (high + low + close) / 3;
+    const r1 = (2 * pp) - low;
+    const s1 = (2 * pp) - high;
+    const r2 = pp + (high - low);
+    const s2 = pp - (high - low);
+    document.getElementById('pivotResult').innerHTML =
+      `PP: ₹${pp.toFixed(2)}<br>R1: ₹${r1.toFixed(2)} | S1: ₹${s1.toFixed(2)}<br>R2: ₹${r2.toFixed(2)} | S2: ₹${s2.toFixed(2)}`;
+  }
+</script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Trader's Diary</h3>
+                <p>Your complete guide to mastering the stock market and becoming a better trader.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="index.html#analysis">Technical Analysis</a></li>
+                    <li><a href="#">Fundamental Analysis</a></li>
+                    <li><a href="#">Trading Psychology</a></li>
+                    <li><a href="#">Market News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contact@tradersdiary.com</li>
+                    <li>
+                        <a href="tel:+916302825279">
+                            <i class="fas fa-phone"></i> +91-6302825279
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.google.com/maps/place/Uttar+Pradesh" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i> Uttar Pradesh
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright" style="text-align: center; padding: 10px; font-family: Arial, sans-serif;">
+            <p style="margin: 0; font-size: 14px;">&copy; 2025 | All rights reserved | Developed with <span
+                    style="color: red;">❤️</span> by <strong>DITSS Team</strong></p>
+
+            <p style="margin: 5px 0 0; font-size: 12px; ">
+                Disclaimer: This website is for educational purposes only. Trading and investing involve financial risk.
+                Always do your own research or consult a certified financial advisor before making any decisions.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+
+        //  Sticky Header
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        // Show nav
+        hamburger.addEventListener('click', () => {
+            navLinks.style.display = 'flex';
+            setTimeout(() => {
+                navLinks.classList.add('active');
+            }, 10);
+        });
+
+
+        // Close when clicking outside
+        document.addEventListener('click', (event) => {
+            const isClickInside = navLinks.contains(event.target) || hamburger.contains(event.target);
+
+            if (!isClickInside && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                setTimeout(() => {
+                    navLinks.style.display = 'none';
+                }, 400);
+            }
+        });
+
+        // Theme Toggle Functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const sunIcon = '<i class="fas fa-sun"></i>';
+        const moonIcon = '<i class="fas fa-moon"></i>';
+
+        // Check and apply saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            themeToggle.innerHTML = savedTheme === 'light' ? moonIcon : sunIcon;
+        } else {
+            // Default to dark theme
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.innerHTML = sunIcon;
+        }
+
+        // Toggle theme on button click
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.innerHTML = newTheme === 'light' ? moonIcon : sunIcon;
+        });
+
+       
+    </script>
+
+
+</body>
+
+</html>

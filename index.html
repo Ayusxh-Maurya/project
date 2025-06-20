@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elearn Trade - Modern Trading Education</title>
+
+    <meta name="description"
+        content="A modern, responsive trading education platform with interactive charts, video lessons, and trading tools.">
+    <meta name="keywords"
+        content="trading, education, stocks, forex, crypto, technical analysis, fundamental analysis, investing">
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/fav.jpg" type="image/x-icon">
+
+    <!-- AOS (Animate on Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- css link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* --- 1. Global Styles & Variables --- */
+        :root {
+            --primary-color: #00aaff;
+            --secondary-color: #00eaff;
+            --success-color: #00e676;
+            --danger-color: #ff3d00;
+            --text-color: #1e2329;
+            --bg-color: #f4f7fa;
+            --card-bg: #ffffff;
+            --border-color: #e0e0e0;
+            --header-bg: rgba(255, 255, 255, 0.85);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #00aaff;
+            --secondary-color: #00eaff;
+            --text-color: #e0e7ff;
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --header-bg: rgba(13, 17, 23, 0.85);
+            --shadow-color: rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header & Navbar -->
+    <header class="header" id="header">
+        <div class="container navbar">
+            <a href="#" class="logo">
+                <img src="img/logo-removebg-preview.png" alt="ElearnTrade Logo" style="height: 40px;">
+            </a>
+
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#learn">Learn</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#analysis">Analysis</a></li>
+                    <li><a href="#markets">Markets</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <a href="https://ditss.in/" class="ditss-btn" target="_blank">DITSS</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <style>
+        .banner-container {
+            margin-top: -100px !important;
+            max-width: 100% !important;
+            text-align: center;
+
+
+        }
+
+        .banner-container img {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .banner-container img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+
+            .banner-container {
+
+                padding: 10px !important;
+            }
+
+            .banner-container img {
+                border-radius: 8px;
+            }
+        }
+    </style>
+
+
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="container hero-content">
+                <div class="banner-container">
+                    <img src="img/Picsart_25-06-19_22-30-24-079.jpg" alt="Masterclass Banner">
+                </div>
+                <h1 data-aos="fade-down">Master the Financial Markets</h1>
+                <p data-aos="fade-up" data-aos-delay="200">
+                    Your journey to becoming a proficient trader starts here. Access expert-led courses, powerful tools,
+                    and a vibrant community.
+                </p>
+                <a href="#learn" class="btn btn-primary" data-aos="fade-up" data-aos-delay="400">Start Learning Now</a>
+            </div>
+        </section>
+
+        <!-- Learn Trade (Videos) -->
+        <section id="learn">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up"
+                    style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                    <i class="fas fa-video" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                    <h2 style="margin: 5px 0;">Learn to Trade</h2>
+                    <p style="max-width: 500px;">Watch our curated video tutorials, from beginner basics to advanced
+                        strategies.</p>
+                </div>
+
+                <div class="grid grid-3" data-aos="fade-up" data-aos-delay="200">
+
+                    <!-- Card 1: Embedded YouTube video -->
+                    <div class="card">
+                        <div class="video-placeholder">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/ul34Jfh-LOk"
+                                title="Intro to Candlesticks" frameborder="0" allowfullscreen>
+                            </iframe>
+                        </div>
+                        <h3>Intro to Candlesticks</h3>
+                    </div>
+
+                    <!-- Card 2: Placeholder -->
+                    <div class="card">
+                        <div class="video-placeholder">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/ul34Jfh-LOk"
+                                title="Risk Management 101" frameborder="0" allowfullscreen>
+                            </iframe>
+                        </div>
+                        <h3>Risk Management 101</h3>
+                    </div>
+
+                    <!-- Card 3: Placeholder -->
+                    <div class="card">
+                        <div class="video-placeholder">
+                            <iframe width="100%" height="200" src="https://www.youtube.com/embed/ul34Jfh-LOk"
+                                title="Psychology of a Trader" frameborder="0" allowfullscreen>
+                            </iframe>
+                        </div>
+                        <h3>Psychology of a Trader</h3>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Trading Calculators -->
+        <section id="tools" style="background-color: var(--card-bg);">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <i class="fas fa-calculator"></i>
+                    <h2>Trading Calculators</h2>
+                    <p>Essential tools to help you manage risk and plan your trades effectively.</p>
+                </div>
+
+                <div class="grid grid-3" data-aos="fade-up" data-aos-delay="200">
+
+                    <a href="Calculators.html" style="text-decoration: none; color: inherit;">
+                        <div class="card calculator-card">
+                            <i class="fas fa-balance-scale-right"></i>
+                            <h3>Lot Size Calculator</h3>
+                            <p>Determine the appropriate position size based on your risk tolerance.</p>
+                        </div>
+                    </a>
+
+                    <a href="Calculators.html" style="text-decoration: none; color: inherit;">
+                        <div class="card calculator-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Risk/Reward Calculator</h3>
+                            <p>Evaluate the potential profit and loss of any trade setup.</p>
+                        </div>
+                    </a>
+
+                    <a href="Calculators.html" style="text-decoration: none; color: inherit;">
+                        <div class="card calculator-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Pivot Point Calculator</h3>
+                            <p>Identify key support and resistance levels for your trading session.</p>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Technical & Fundamental Analysis -->
+        <section id="analysis">
+            <div class="container">
+                <!-- Technical Analysis -->
+                <div class="section-header" data-aos="fade-up">
+                    <i class="fas fa-chart-bar"></i>
+                    <h2>Technical Analysis</h2>
+                    <p>Master chart patterns, indicators, and price action to predict market movements.</p>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid grid-2">
+                        <div>
+                            <h3>Candlestick & RSI Analysis</h3>
+                            <p>Here we see a classic bullish engulfing pattern. The Relative Strength Index (RSI) below
+                                is climbing out of the oversold region (below 30), suggesting a potential upward
+                                reversal.</p>
+                        </div>
+                        <div><canvas id="technicalChart"></canvas></div>
+                    </div>
+                </div>
+
+                <!-- Fundamental Analysis -->
+                <div class="section-header" data-aos="fade-up" style="margin-top: 5rem;">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <h2>Fundamental Analysis</h2>
+                    <p>Analyze a company's financial health to determine its intrinsic value.</p>
+                </div>
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="grid grid-2">
+                        <div><canvas id="fundamentalChart"></canvas></div>
+                        <div>
+                            <h3>Company Financials</h3>
+                            <p>This chart visualizes a company's revenue vs. net income over the past four quarters. A
+                                growing revenue and a stable or increasing profit margin are strong positive indicators
+                                for investors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Financial Market Overview -->
+        <section id="markets" style="background-color: var(--card-bg);">
+            <div class="ticker-tape">
+                <div class="ticker-content">
+                    <div class="ticker-item">BTC/USD $68,540.23 <span class="up"><i class="fas fa-arrow-up"></i>
+                            2.1%</span></div>
+                    <div class="ticker-item">ETH/USD $3,560.11 <span class="up"><i class="fas fa-arrow-up"></i>
+                            1.8%</span></div>
+                    <div class="ticker-item">AAPL $190.50 <span class="down"><i class="fas fa-arrow-down"></i>
+                            0.5%</span></div>
+                    <div class="ticker-item">GOOGL $175.80 <span class="up"><i class="fas fa-arrow-up"></i> 0.9%</span>
+                    </div>
+                    <div class="ticker-item">EUR/USD 1.0855 <span class="down"><i class="fas fa-arrow-down"></i>
+                            0.1%</span></div>
+                    <div class="ticker-item">GOLD $2,350.70 <span class="up"><i class="fas fa-arrow-up"></i> 0.7%</span>
+                    </div>
+                    <!-- Repeat for smooth loop -->
+                    <div class="ticker-item">BTC/USD $68,540.23 <span class="up"><i class="fas fa-arrow-up"></i>
+                            2.1%</span></div>
+                    <div class="ticker-item">ETH/USD $3,560.11 <span class="up"><i class="fas fa-arrow-up"></i>
+                            1.8%</span></div>
+                    <div class="ticker-item">AAPL $190.50 <span class="down"><i class="fas fa-arrow-down"></i>
+                            0.5%</span></div>
+                    <div class="ticker-item">GOOGL $175.80 <span class="up"><i class="fas fa-arrow-up"></i> 0.9%</span>
+                    </div>
+                    <div class="ticker-item">EUR/USD 1.0855 <span class="down"><i class="fas fa-arrow-down"></i>
+                            0.1%</span></div>
+                    <div class="ticker-item">GOLD $2,350.70 <span class="up"><i class="fas fa-arrow-up"></i> 0.7%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <i class="fas fa-globe-americas"></i>
+                    <h2>Financial Market Overview</h2>
+                    <p>Explore different markets and asset classes from around the world.</p>
+                </div>
+                <div class="grid grid-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card">
+                        <h3><i class="fas fa-landmark"></i> Equity Trading</h3>
+                        <p>Dive into the stock market. We cover sector analysis, stock picking, and performance
+                            tracking.</p>
+                        <img src="https://www.pentadsecurities.com/_next/image?url=https%3A%2F%2Fadmin.pentadsecurities.com%2Fwp-content%2Fuploads%2F2024%2F04%2Fpentad.png&w=3840&q=75"
+                            alt="Equity Trading Graph">
+                    </div>
+                    <div class="card">
+                        <h3><i class="fas fa-file-contract"></i> Options & Futures</h3>
+                        <p>Learn advanced strategies for options and futures trading, including hedging and speculation.
+                        </p>
+                        <img src="https://www.adigitalblogger.com/wp-content/uploads/17F06DB1-97EB-4466-8FC5-B576E751DE43-1-compressed-2.jpg"
+                            alt="Options Trading Diagram">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- More Sections (Blog, Books, etc.) -->
+        <section id="blog">
+            <div class="container">
+                <div class="grid grid-2">
+                    <!-- Blog Posts -->
+                    <div data-aos="fade-right">
+                        <div class="section-header" style="text-align: left;">
+                            <i class="fas fa-newspaper"></i>
+                            <h3>Latest Blog Posts</h3>
+                            <p>Insights, news, analysis, trends, strategies, updates, tips, opinions, research, market
+                                moves, education.
+
+                            </p>
+                        </div>
+                        <div class="card blog-post-card">
+                            <img src="https://mavericktrading.com/wp-content/uploads/2024/08/Trade-Smart-1280x640.png"
+                                alt="Blog post thumbnail">
+                            <span class="category">Psychology</span>
+                            <h4>The 7 Deadly Sins of Trading</h4>
+                            <p>Avoid these common psychological traps... <a href="blog.html">Read More</a></p>
+                        </div>
+                    </div>
+                    <!-- Top Books -->
+                    <div data-aos="fade-left">
+                        <div class="section-header" style="text-align: left;">
+                            <i class="fas fa-book-open"></i>
+                            <h3>Top Financial Books</h3>
+                            <p>Expand your knowledge with these must-read books on trading and investing.</p>
+                        </div>
+                        <div class="card book-card">
+                            <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?q=80&w=400"
+                                alt="Book cover">
+                            <h4>"Reminiscences of a Stock Operator"</h4>
+                            <p>A timeless classic on market speculation and crowd psychology.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trading IQ & Psychology -->
+        <section id="iq-psychology" style="background-color: var(--card-bg);">
+            <div class="container">
+                <div class="grid grid-2">
+                    <div class="card" data-aos="zoom-in-right">
+                        <div class="section-header" style="text-align: left;">
+                            <i class="fas fa-brain"></i>
+                            <h3>Test Your Trading IQ</h3>
+                            <p>Take our quizzes to test your knowledge and identify areas for improvement.</p>
+                            <a href="iq-test.html" class="btn btn-primary" style="margin-top:1rem;">Start Mock Test</a>
+                        </div>
+                    </div>
+                    <div class="card" data-aos="zoom-in-left">
+                        <div class="section-header" style="text-align: left;">
+                            <i class="fas fa-comment-dots"></i>
+                            <h3>Trade Psychology</h3>
+                            <p>"The four most dangerous words in investing are: 'This time it's different.'"</p>
+                            <p style="font-style: italic; text-align: right;">- Sir John Templeton</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interact with Us (Contact) -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <i class="fas fa-users"></i>
+                    <h2>Interact With Us</h2>
+                    <p>Have questions? Want to join our community? Get in touch!</p>
+                </div>
+                <div class="grid grid-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card">
+                        <h3>Send a Message</h3>
+                        <form class="contact-form">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                            <input type="email" name="email" placeholder="Your Email" required>
+                            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <h3>Join Our Community</h3>
+                        <p>Connect with fellow traders, share ideas, and get real-time support from our mentors.</p>
+                        <a href="#" class="btn btn-primary"
+                            style="background: #5865F2; width: 100%; margin-bottom: 1rem; text-align: center;">
+                            <i class="fab fa-discord"></i> Join our Discord
+                        </a>
+                        <a href="#" class="btn btn-primary"
+                            style="background: #2AABEE; width: 100%; text-align: center;">
+                            <i class="fab fa-telegram-plane"></i> Follow on Telegram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sticky Register Button for Futures -->
+    <div class="sticky-register" data-aos="fade-left" data-aos-delay="1000" data-aos-offset="0">
+        <a href="pyament.html" class="btn btn-primary">Register for Futures Trading</a>
+    </div>
+
+    <!-- Sticky Button (Second from Top) -->
+    <a href="book.html" class="rotated-btn">📘 Financial Book</a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Trader's Diary</h3>
+                <p>Your complete guide to mastering the stock market and becoming a better trader.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Categories</h3>
+                <ul>
+                    <li><a href="#analysis">Technical Analysis</a></li>
+                    <li><a href="#">Fundamental Analysis</a></li>
+                    <li><a href="#">Trading Psychology</a></li>
+                    <li><a href="blog.html">Market News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contact@tradersdiary.com</li>
+                    <li>
+                        <a href="tel:+916302825279">
+                            <i class="fas fa-phone"></i> +91-6302825279
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.google.com/maps/place/Uttar+Pradesh" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i> Uttar Pradesh
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright" style="text-align: center; padding: 10px; font-family: Arial, sans-serif;">
+            <p style="margin: 0; font-size: 14px;">&copy; 2025 | All rights reserved | Developed with <span
+                    style="color: red;">❤️</span> by <strong>DITSS Team</strong></p>
+            <p style="margin: 5px 0 0; font-size: 12px; ">
+                Disclaimer: This website is for educational purposes only. Trading and investing involve financial risk.
+                Always do your own research or consult a certified financial advisor before making any decisions.
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Initialize AOS (Animate on Scroll)
+            AOS.init({
+                duration: 800,
+                once: true, // Animation happens only once
+                offset: 100, // Trigger animation a bit early
+            });
+
+            // 2. Dark/Light Mode Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const sunIcon = '<i class="fas fa-sun"></i>';
+            const moonIcon = '<i class="fas fa-moon"></i>';
+
+            const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+            if (currentTheme) {
+                document.documentElement.setAttribute('data-theme', currentTheme);
+                if (currentTheme === 'light') {
+                    themeToggle.innerHTML = moonIcon;
+                } else {
+                    themeToggle.innerHTML = sunIcon;
+                }
+            }
+
+            themeToggle.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme');
+                if (current === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                    themeToggle.innerHTML = moonIcon;
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                    themeToggle.innerHTML = sunIcon;
+                }
+            });
+
+            // 3. Sticky Header
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+
+            // Show nav
+            hamburger.addEventListener('click', () => {
+                navLinks.style.display = 'flex';
+                setTimeout(() => {
+                    navLinks.classList.add('active');
+                }, 10);
+            });
+
+            // // Close on link click
+            // navLinks.querySelectorAll('a').forEach(link => {
+            //     link.addEventListener('click', () => {
+            //         navLinks.classList.remove('active');
+            //         setTimeout(() => {
+            //             navLinks.style.display = 'none';
+            //         }, 400);
+            //     });
+            // });
+
+            // Close when clicking outside
+            document.addEventListener('click', (event) => {
+                const isClickInside = navLinks.contains(event.target) || hamburger.contains(event.target);
+
+                if (!isClickInside && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    setTimeout(() => {
+                        navLinks.style.display = 'none';
+                    }, 400);
+                }
+            });
+
+            // --- Chart.js Implementations ---
+
+            const chartConfig = {
+                fontColor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#e0e7ff' : '#1e2329',
+                gridColor: document.documentElement.getAttribute('data-theme') === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+            };
+
+            // 5. Technical Analysis Chart
+            const techCtx = document.getElementById('technicalChart').getContext('2d');
+            new Chart(techCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Candlestick Body',
+                        data: [120, 122, 125, 123, 130, 135],
+                        backgroundColor: (context) => {
+                            const value = context.dataset.data[context.dataIndex];
+                            return value > context.dataset.data[context.dataIndex - 1] ? 'rgba(0, 230, 118, 0.7)' : 'rgba(255, 61, 0, 0.7)';
+                        },
+                        borderColor: (context) => {
+                            const value = context.dataset.data[context.dataIndex];
+                            return value > context.dataset.data[context.dataIndex - 1] ? '#00e676' : '#ff3d00';
+                        },
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'RSI',
+                        data: [25, 28, 40, 35, 55, 65],
+                        type: 'line',
+                        borderColor: '#00aaff',
+                        tension: 0.4,
+                        yAxisID: 'y1'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { labels: { color: chartConfig.fontColor } } },
+                    scales: {
+                        x: { ticks: { color: chartConfig.fontColor }, grid: { color: chartConfig.gridColor } },
+                        y: { position: 'left', ticks: { color: chartConfig.fontColor }, grid: { color: chartConfig.gridColor } },
+                        y1: { position: 'right', ticks: { color: chartConfig.fontColor }, grid: { drawOnChartArea: false } }
+                    }
+                }
+            });
+
+            // 6. Fundamental Analysis Chart
+            const funCtx = document.getElementById('fundamentalChart').getContext('2d');
+            new Chart(funCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Q1 2024', 'Q2 2024', 'Q3 2024', 'Q4 2025'],
+                    datasets: [
+                        {
+                            label: 'Revenue (in M)',
+                            data: [120, 135, 130, 150],
+                            backgroundColor: 'rgba(0, 170, 255, 0.6)',
+                            borderColor: '#00aaff',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Net Income (in M)',
+                            data: [20, 25, 22, 30],
+                            backgroundColor: 'rgba(0, 234, 255, 0.6)',
+                            borderColor: '#00eaff',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { labels: { color: chartConfig.fontColor } } },
+                    scales: {
+                        x: { ticks: { color: chartConfig.fontColor }, grid: { color: chartConfig.gridColor } },
+                        y: { ticks: { color: chartConfig.fontColor }, grid: { color: chartConfig.gridColor } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
